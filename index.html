@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Derechos Laborales Colombia 2025 — Vol. 4</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Manrope:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --miel:     #E8A838;
+  --miel-d:   #C68A1A;
+  --miel-s:   #F5C96A;
+  --cafe:     #2C1A0E;
+  --cafe-m:   #3D2510;
+  --cafe-c:   #5C3A1E;
+  --cafe-t:   #8B6347;
+  --crema:    #FDF6EC;
+  --text:     #E8D5B8;
+  --gris:     #A89070;
+  --verde:    #3D8B5E;
+  --rojo:     #C0392B;
+  --azul:     #2471A3;
+  --border:   rgba(232,168,56,.2);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'Manrope', sans-serif;
+  background: var(--cafe);
+  color: var(--text);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ===== HEADER ===== */
+header {
+  background: linear-gradient(145deg, #1A0D06 0%, var(--cafe-m) 50%, #1E2D18 100%);
+  position: relative; overflow: hidden;
+  border-bottom: 2px solid var(--miel);
+}
+.hbg {
+  position: absolute; inset: 0; pointer-events: none;
+  background:
+    radial-gradient(ellipse at 80% 50%, rgba(232,168,56,.07) 0%, transparent 60%),
+    radial-gradient(ellipse at 10% 80%, rgba(61,139,94,.06) 0%, transparent 50%);
+}
+.header-inner {
+  position: relative; z-index: 2;
+  max-width: 940px; margin: 0 auto;
+  padding: 32px 20px 26px;
+}
+.vol-row {
+  display: flex; align-items: center; gap: 10px; margin-bottom: 14px;
+}
+.vol-pill {
+  background: var(--miel); color: var(--cafe);
+  font-family: 'Syne', sans-serif; font-weight: 800;
+  font-size: 10px; letter-spacing: 2px; text-transform: uppercase;
+  padding: 4px 12px; border-radius: 20px;
+}
+.vol-line { flex: 1; height: 1px; background: linear-gradient(90deg, rgba(232,168,56,.4), transparent); }
+header h1 {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(28px, 5.5vw, 54px);
+  font-weight: 800; line-height: 1.05;
+  color: var(--crema); margin-bottom: 10px;
+}
+header h1 em { color: var(--miel); font-style: normal; }
+.header-chips {
+  display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px;
+}
+.chip {
+  background: rgba(232,168,56,.12); border: 1px solid rgba(232,168,56,.25);
+  border-radius: 6px; padding: 5px 12px;
+  font-size: 11.5px; font-weight: 600; color: var(--miel-s);
+}
+.reloj-row {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 12px; color: var(--gris);
+}
+.rdot { width: 7px; height: 7px; border-radius: 50%; background: var(--verde); animation: blink 1.2s infinite; }
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:.2} }
+
+/* SMMLV BADGE */
+.smmlv-bar {
+  background: rgba(232,168,56,.1); border-top: 1px solid rgba(232,168,56,.15);
+  padding: 10px 20px; display: flex; flex-wrap: wrap; gap: 16px;
+  max-width: 940px; margin: 0 auto;
+}
+.smmlv-item { font-size: 12px; }
+.smmlv-label { color: var(--gris); }
+.smmlv-val { color: var(--miel-s); font-weight: 700; margin-left: 6px; }
+
+/* ===== TABS ===== */
+.nav-wrap {
+  background: var(--cafe-m);
+  border-bottom: 1px solid rgba(232,168,56,.12);
+  position: sticky; top: 0; z-index: 100;
+}
+nav {
+  max-width: 940px; margin: 0 auto;
+  display: flex; overflow-x: auto; scrollbar-width: none; padding: 0 10px;
+}
+nav::-webkit-scrollbar { display: none; }
+.tab {
+  flex: none; background: none; border: none;
+  color: var(--cafe-t); font-family: 'Manrope', sans-serif;
+  font-size: 12.5px; font-weight: 600;
+  padding: 13px 16px; cursor: pointer;
+  border-bottom: 2px solid transparent;
+  transition: all .2s; white-space: nowrap;
+}
+.tab:hover { color: var(--miel-s); }
+.tab.active { color: var(--miel); border-bottom-color: var(--miel); }
+
+/* ===== MAIN ===== */
+main { max-width: 940px; margin: 0 auto; padding: 24px 16px 70px; }
+
+/* ===== PANELS ===== */
+.panel { display: none; animation: rise .3s ease both; }
+.panel.active { display: block; }
+@keyframes rise { from{opacity:0;transform:translateY(10px)} to{opacity:1;transform:translateY(0)} }
+
+/* ===== CARDS ===== */
+.card {
+  background: var(--cafe-m);
+  border: 1px solid rgba(255,255,255,.06);
+  border-radius: 14px; padding: 20px 18px;
+  margin-bottom: 12px; transition: border-color .2s;
+}
+.card:hover { border-color: rgba(232,168,56,.25); }
+.card-title {
+  font-family: 'Syne', sans-serif;
+  font-size: 16px; font-weight: 700; color: var(--crema);
+  margin-bottom: 10px; display: flex; align-items: center; gap: 10px;
+}
+.ibox {
+  width: 36px; height: 36px; border-radius: 9px;
+  background: rgba(232,168,56,.12); display: flex;
+  align-items: center; justify-content: center;
+  font-size: 17px; flex-shrink: 0;
+}
+.card p, .card li { font-size: 13.5px; line-height: 1.68; color: var(--gris); margin-bottom: 5px; }
+.card ul { padding-left: 18px; }
+.card strong { color: var(--text); }
+
+/* HIGHLIGHT */
+.hl { border-radius: 9px; padding: 12px 15px; margin: 10px 0; font-size: 13px; line-height: 1.65; }
+.hl-miel  { background: rgba(232,168,56,.1);  border-left: 3px solid var(--miel);  color: var(--crema); }
+.hl-verde { background: rgba(61,139,94,.1);   border-left: 3px solid var(--verde); color: var(--crema); }
+.hl-rojo  { background: rgba(192,57,43,.1);   border-left: 3px solid var(--rojo);  color: var(--crema); }
+.hl-azul  { background: rgba(36,113,163,.1);  border-left: 3px solid var(--azul);  color: var(--crema); }
+
+/* GRID */
+.grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px; }
+.grid3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin-bottom: 12px; }
+@media(max-width:580px){ .grid2{grid-template-columns:1fr} .grid3{grid-template-columns:1fr 1fr} }
+@media(max-width:360px){ .grid3{grid-template-columns:1fr} }
+
+.stat-card {
+  background: var(--cafe-m); border: 1px solid rgba(255,255,255,.06);
+  border-radius: 12px; padding: 16px 14px; text-align: center;
+  transition: border-color .2s;
+}
+.stat-card:hover { border-color: var(--border); }
+.snum { font-family: 'Syne', sans-serif; font-size: 32px; font-weight: 800; color: var(--miel); line-height: 1; margin-bottom: 4px; }
+.slabel { font-size: 11.5px; color: var(--gris); font-weight: 600; line-height: 1.4; }
+
+/* PRESTACIÓN CARD */
+.prest-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px; }
+@media(max-width:520px){ .prest-grid{grid-template-columns:1fr} }
+.prest-card {
+  background: var(--cafe-c); border: 1px solid rgba(255,255,255,.08);
+  border-radius: 12px; padding: 16px 15px;
+  transition: border-color .2s, background .2s;
+}
+.prest-card:hover { border-color: rgba(232,168,56,.3); background: rgba(232,168,56,.04); }
+.prest-tag { font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--miel); margin-bottom: 6px; }
+.prest-title { font-family: 'Syne', sans-serif; font-size: 14px; font-weight: 700; color: var(--crema); margin-bottom: 5px; }
+.prest-formula {
+  background: rgba(0,0,0,.3); border-radius: 6px; padding: 7px 10px;
+  font-family: monospace; font-size: 12px; color: var(--miel-s);
+  margin: 8px 0; word-break: break-all;
+}
+.prest-desc { font-size: 12px; color: var(--gris); line-height: 1.55; }
+
+/* CALCULADORA */
+.form-group { margin-bottom: 14px; }
+label {
+  font-size: 12px; font-weight: 700; color: var(--gris);
+  display: block; margin-bottom: 6px; text-transform: uppercase; letter-spacing: .4px;
+}
+input, select {
+  width: 100%; background: rgba(255,255,255,.05);
+  border: 1px solid rgba(255,255,255,.1); border-radius: 9px;
+  color: var(--crema); font-family: 'Manrope', sans-serif;
+  font-size: 14px; padding: 11px 13px; outline: none; transition: border-color .2s;
+}
+input:focus, select:focus { border-color: var(--miel); }
+select option { background: var(--cafe-m); }
+.btn {
+  background: var(--miel); color: var(--cafe);
+  border: none; border-radius: 9px;
+  font-family: 'Syne', sans-serif; font-size: 14px; font-weight: 800;
+  padding: 13px 20px; cursor: pointer; width: 100%;
+  transition: background .2s, transform .1s;
+}
+.btn:hover { background: var(--miel-s); }
+.btn:active { transform: scale(.98); }
+
+/* RESULTADO CALC */
+#res-liq { display: none; margin-top: 18px; }
+.res-wrap {
+  background: rgba(232,168,56,.05); border: 1px solid rgba(232,168,56,.2);
+  border-radius: 12px; overflow: hidden;
+}
+.res-head {
+  background: rgba(232,168,56,.15); padding: 13px 18px;
+  font-family: 'Syne', sans-serif; font-size: 15px; font-weight: 700; color: var(--crema);
+}
+.res-body { padding: 4px 18px 16px; }
+.res-row {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,.05); gap: 12px;
+}
+.res-row:last-child { border-bottom: none; }
+.rl { font-size: 13px; color: var(--gris); flex: 1; }
+.rv { font-size: 14px; font-weight: 700; color: var(--crema); text-align: right; }
+.rv-total { font-size: 18px; font-weight: 800; color: var(--miel); }
+.res-sep { height: 1px; background: rgba(232,168,56,.2); margin: 6px 0; }
+
+/* PASOS */
+.paso {
+  display: flex; gap: 14px;
+  background: var(--cafe-m); border: 1px solid rgba(255,255,255,.06);
+  border-radius: 12px; padding: 16px; margin-bottom: 10px;
+  transition: border-color .2s;
+}
+.paso:hover { border-color: rgba(232,168,56,.25); }
+.pnum {
+  width: 32px; height: 32px; border-radius: 8px;
+  background: var(--miel); color: var(--cafe);
+  font-family: 'Syne', sans-serif; font-weight: 800; font-size: 14px;
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px;
+}
+.pcont h3 { font-family: 'Syne', sans-serif; font-size: 14px; font-weight: 700; color: var(--crema); margin-bottom: 4px; }
+.pcont p  { font-size: 13px; color: var(--gris); line-height: 1.55; }
+
+/* ACCORDION */
+.acc { margin-bottom: 8px; }
+.acc-head {
+  width: 100%; background: var(--cafe-m);
+  border: 1px solid rgba(255,255,255,.07); border-radius: 9px;
+  color: var(--crema); font-family: 'Manrope', sans-serif;
+  font-size: 13.5px; font-weight: 600;
+  text-align: left; padding: 13px 16px; cursor: pointer;
+  display: flex; justify-content: space-between; align-items: center;
+  transition: border-color .2s;
+}
+.acc-head:hover { border-color: rgba(232,168,56,.3); }
+.acc-head.open { border-color: var(--miel); color: var(--miel-s); }
+.arr { transition: transform .3s; font-size: 11px; color: var(--miel); }
+.acc-head.open .arr { transform: rotate(180deg); }
+.acc-body {
+  display: none;
+  background: rgba(232,168,56,.04); border: 1px solid rgba(232,168,56,.15);
+  border-top: none; border-radius: 0 0 9px 9px;
+  padding: 14px 16px; font-size: 13px; color: var(--gris); line-height: 1.68;
+}
+.acc-body p { margin-bottom: 8px; }
+.acc-body ul { padding-left: 18px; }
+.acc-body li { margin-bottom: 4px; }
+.acc-body strong { color: var(--text); }
+
+/* JORNADA TABLE */
+.tabla { width: 100%; border-collapse: collapse; font-size: 13px; margin-top: 10px; }
+.tabla th {
+  background: rgba(232,168,56,.12); color: var(--miel-s);
+  font-weight: 700; font-size: 11px; letter-spacing: 1px; text-transform: uppercase;
+  padding: 9px 13px; text-align: left; border-bottom: 1px solid rgba(232,168,56,.2);
+}
+.tabla td { padding: 9px 13px; border-bottom: 1px solid rgba(255,255,255,.04); color: var(--gris); }
+.tabla tr:hover td { background: rgba(232,168,56,.03); }
+.tabla strong { color: var(--text); }
+
+/* DISCLAIMER */
+.disclaimer {
+  background: rgba(232,168,56,.05); border: 1px solid rgba(232,168,56,.15);
+  border-radius: 10px; padding: 12px 15px;
+  font-size: 12px; color: var(--gris); line-height: 1.6; margin-top: 18px;
+}
+.disclaimer strong { color: var(--miel); }
+
+/* FOOTER */
+footer {
+  text-align: center; padding: 20px 16px 30px;
+  font-size: 11px; color: var(--cafe-t);
+  border-top: 1px solid rgba(255,255,255,.05);
+  max-width: 940px; margin: 0 auto;
+}
+footer span { color: var(--miel); }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="hbg"></div>
+  <div class="header-inner">
+    <div class="vol-row">
+      <div class="vol-pill">📚 Biblioteca Legal · Vol. 4</div>
+      <div class="vol-line"></div>
+    </div>
+    <h1>Derechos<br><em>Laborales</em></h1>
+    <div class="header-chips">
+      <span class="chip">⚖️ Código Sustantivo del Trabajo</span>
+      <span class="chip">💼 Liquidación 2025</span>
+      <span class="chip">🔄 Jornada 44h desde jul. 2025</span>
+    </div>
+    <div class="reloj-row">
+      <div class="rdot"></div>
+      <span id="reloj-txt">Cargando…</span>
+    </div>
+  </div>
+  <div class="smmlv-bar">
+    <div class="smmlv-item"><span class="smmlv-label">SMMLV 2025:</span><span class="smmlv-val">$1.423.500</span></div>
+    <div class="smmlv-item"><span class="smmlv-label">Aux. transporte:</span><span class="smmlv-val">$200.000</span></div>
+    <div class="smmlv-item"><span class="smmlv-label">SMDLV:</span><span class="smmlv-val">~$47.450</span></div>
+    <div class="smmlv-item"><span class="smmlv-label">Jornada máxima:</span><span class="smmlv-val">44h/semana (desde jul. 2025)</span></div>
+  </div>
+</header>
+
+<!-- TABS -->
+<div class="nav-wrap">
+  <nav>
+    <button class="tab active" onclick="showTab('inicio',this)">🏠 Inicio</button>
+    <button class="tab" onclick="showTab('prestaciones',this)">💰 Prestaciones</button>
+    <button class="tab" onclick="showTab('calculadora',this)">🧮 Calculadora</button>
+    <button class="tab" onclick="showTab('jornada',this)">⏰ Jornada y extras</button>
+    <button class="tab" onclick="showTab('despido',this)">🚪 Despido</button>
+    <button class="tab" onclick="showTab('faq',this)">❓ Preguntas</button>
+  </nav>
+</div>
+
+<main>
+
+  <!-- ======= INICIO ======= -->
+  <div class="panel active" id="panel-inicio">
+
+    <div class="grid3">
+      <div class="stat-card"><div class="snum">4</div><div class="slabel">Prestaciones sociales obligatorias</div></div>
+      <div class="stat-card"><div class="snum">14</div><div class="slabel">Feb: límite consignación cesantías al fondo</div></div>
+      <div class="stat-card"><div class="snum">15</div><div class="slabel">Días hábiles de vacaciones por año trabajado</div></div>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><div class="ibox">👷</div>¿Qué son las prestaciones sociales?</div>
+      <p>Son pagos <strong>adicionales al salario</strong> que el empleador debe reconocer obligatoriamente a todo trabajador vinculado mediante contrato laboral (a término fijo, indefinido u obra). Están reguladas por el <strong>Código Sustantivo del Trabajo (CST)</strong>.</p>
+      <div class="hl hl-rojo">
+        🚫 <strong>¡Ojo!</strong> Los contratos de prestación de servicios (OPS / honorarios) <strong>NO generan prestaciones sociales</strong> ni liquidación, porque no son contratos laborales. Sin embargo, si hay subordinación real, el trabajador puede reclamar sus derechos aunque el contrato diga otra cosa.
+      </div>
+      <div class="hl hl-verde">
+        ✅ Las prestaciones sociales son <strong>irrenunciables</strong>. Aunque el trabajador firme un documento renunciando a ellas, ese acuerdo no tiene valor legal.
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><div class="ibox">📅</div>Fechas clave del año laboral</div>
+      <div class="grid2">
+        <div class="hl hl-miel"><strong>14 de febrero</strong><br>Fecha límite para que el empleador consigne las cesantías del año anterior al fondo del trabajador.</div>
+        <div class="hl hl-miel"><strong>31 de enero</strong><br>Fecha límite para pagar los intereses sobre cesantías directamente al trabajador.</div>
+        <div class="hl hl-miel"><strong>30 de junio</strong><br>Pago de la primera cuota de prima de servicios (15 días de salario).</div>
+        <div class="hl hl-miel"><strong>20 de diciembre</strong><br>Pago de la segunda cuota de prima de servicios (15 días de salario).</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><div class="ibox">🔔</div>Novedad 2025: Reducción de jornada y Ley 2466</div>
+      <ul>
+        <li>Desde el <strong>15 de julio de 2025</strong>, la jornada laboral máxima bajó a <strong>44 horas semanales</strong> (antes 47h). Prevista para 42h en julio de 2026.</li>
+        <li>La <strong>Ley 2466 de 2025</strong> permite consignar cesantías mensualmente al fondo (8.33% del salario vía PILA) en lugar del esquema anual tradicional, si hay acuerdo escrito.</li>
+      </ul>
+    </div>
+
+  </div><!-- /inicio -->
+
+  <!-- ======= PRESTACIONES ======= -->
+  <div class="panel" id="panel-prestaciones">
+
+    <div class="card">
+      <div class="card-title"><div class="ibox">💰</div>Las 4 prestaciones sociales obligatorias</div>
+    </div>
+
+    <div class="prest-grid">
+      <div class="prest-card">
+        <div class="prest-tag">Art. 249 CST</div>
+        <div class="prest-title">🏦 Cesantías</div>
+        <div class="prest-formula">( Salario base × Días ) ÷ 360</div>
+        <div class="prest-desc">1 mes de salario por año trabajado. Se consignan al fondo antes del 14 de febrero. Incluye auxilio de transporte en la base. Se pueden retirar para vivienda, educación o desempleo.</div>
+      </div>
+      <div class="prest-card">
+        <div class="prest-tag">12% anual</div>
+        <div class="prest-title">📈 Intereses sobre cesantías</div>
+        <div class="prest-formula">Cesantías × 0.12 × ( Días ÷ 360 )</div>
+        <div class="prest-desc">Se pagan directamente al trabajador (no al fondo) antes del 31 de enero. Corresponden al 12% anual sobre el valor de las cesantías acumuladas.</div>
+      </div>
+      <div class="prest-card">
+        <div class="prest-tag">Art. 306 CST</div>
+        <div class="prest-title">🎁 Prima de servicios</div>
+        <div class="prest-formula">( Salario base × Días sem. ) ÷ 360</div>
+        <div class="prest-desc">15 días de salario por semestre trabajado. Se paga en dos cuotas: antes del 30 de junio y antes del 20 de diciembre. Incluye auxilio de transporte si aplica.</div>
+      </div>
+      <div class="prest-card">
+        <div class="prest-tag">Art. 186 CST</div>
+        <div class="prest-title">🏖️ Vacaciones</div>
+        <div class="prest-formula">( Salario mensual × Días ) ÷ 720</div>
+        <div class="prest-desc">15 días hábiles por año trabajado. Técnicamente no es prestación social sino descanso remunerado. No incluye auxilio de transporte en la base. Se pagan con el salario ordinario vigente al inicio.</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><div class="ibox">📌</div>¿Qué entra en el salario base?</div>
+      <div class="grid2">
+        <div>
+          <p style="font-weight:700;color:var(--crema);margin-bottom:8px;">✅ SÍ entra en la base:</p>
+          <ul>
+            <li>Salario mensual fijo</li>
+            <li>Auxilio de transporte <em>(para cesantías y prima, si gana hasta 2 SMMLV)</em></li>
+            <li>Horas extras y recargos (promedio)</li>
+            <li>Comisiones y bonificaciones habituales</li>
+          </ul>
+        </div>
+        <div>
+          <p style="font-weight:700;color:var(--crema);margin-bottom:8px;">❌ NO entra en la base:</p>
+          <ul>
+            <li>Auxilio de transporte para <strong>vacaciones</strong></li>
+            <li>Viáticos accidentales</li>
+            <li>Bonificaciones ocasionales sin carácter salarial</li>
+            <li>Beneficios en especie acordados como no salariales</li>
+          </ul>
+        </div>
+      </div>
+      <div class="hl hl-azul" style="margin-top:10px;">
+        💡 El auxilio de transporte ($200.000 en 2025) solo aplica para trabajadores que ganen hasta <strong>2 SMMLV ($2.847.000)</strong>. Si gana más, no recibe auxilio y no entra en la base.
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><div class="ibox">⏰</div>Sanciones por no pagar a tiempo</div>
+      <ul>
+        <li><strong>Cesantías tardías (al fondo):</strong> 1 día de salario por cada día de mora — indemnización moratoria.</li>
+        <li><strong>Prima tardía:</strong> Multa de 1 a 5.000 SMMLV + 1 día de salario por día de demora.</li>
+        <li><strong>Liquidación final tardía:</strong> Indemnización moratoria Art. 65 CST: 1 día de salario por cada día de retraso en pagar al terminar el contrato.</li>
+      </ul>
+    </div>
+
+  </div><!-- /prestaciones -->
+
+  <!-- ======= CALCULADORA ======= -->
+  <div class="panel" id="panel-calculadora">
+    <div class="card">
+      <div class="card-title"><div class="ibox">🧮</div>Calculadora de Liquidación Laboral</div>
+      <p style="font-size:13px;margin-bottom:16px;">Calcula cesantías, intereses, prima de servicios y vacaciones según tu salario y tiempo trabajado. Valores 2025.</p>
+
+      <div class="grid2">
+        <div class="form-group">
+          <label>Salario mensual ($)</label>
+          <input type="number" id="salario" placeholder="Ej: 1423500" min="0">
+        </div>
+        <div class="form-group">
+          <label>¿Recibe auxilio de transporte?</label>
+          <select id="auxTransporte">
+            <option value="si">Sí ($200.000)</option>
+            <option value="no">No</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="grid2">
+        <div class="form-group">
+          <label>Fecha de ingreso</label>
+          <input type="date" id="fechaIngreso">
+        </div>
+        <div class="form-group">
+          <label>Fecha de retiro (o hoy)</label>
+          <input type="date" id="fechaRetiro">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>¿Cuántos días de vacaciones ya disfrutó?</label>
+        <input type="number" id="vacDisfrutadas" placeholder="0" min="0" value="0">
+      </div>
+
+      <button class="btn" onclick="calcularLiquidacion()">Calcular liquidación</button>
+
+      <div id="res-liq">
+        <div class="res-wrap">
+          <div class="res-head">📊 Liquidación estimada</div>
+          <div class="res-body" id="res-liq-body"></div>
+        </div>
+      </div>
+
+      <div class="disclaimer">
+        <strong>⚠️ Aviso:</strong> Esta calculadora usa el año comercial de 360 días. Es orientativa. Para salarios variables (comisiones, horas extra), el resultado puede variar. Consulta siempre a un contador o abogado laboral.
+      </div>
+    </div>
+  </div><!-- /calculadora -->
+
+  <!-- ======= JORNADA ======= -->
+  <div class="panel" id="panel-jornada">
+
+    <div class="card">
+      <div class="card-title"><div class="ibox">⏰</div>Jornada laboral 2025 (Ley 2101 de 2021)</div>
+      <table class="tabla">
+        <thead><tr><th>Período</th><th>Jornada máxima</th><th>Vigencia</th></tr></thead>
+        <tbody>
+          <tr><td>Antes jul. 2023</td><td><strong>48 horas/semana</strong></td><td>Régimen anterior</td></tr>
+          <tr><td>Jul. 2023 – Jul. 2024</td><td><strong>47 horas/semana</strong></td><td>1ª reducción</td></tr>
+          <tr><td>Jul. 2024 – Jul. 2025</td><td><strong>46 horas/semana</strong></td><td>2ª reducción</td></tr>
+          <tr><td><strong>Desde 15 jul. 2025</strong></td><td style="color:var(--miel);font-weight:700;">44 horas/semana</td><td>✅ Actual</td></tr>
+          <tr><td>Desde 15 jul. 2026</td><td><strong>42 horas/semana</strong></td><td>Próxima reducción</td></tr>
+        </tbody>
+      </table>
+      <div class="hl hl-verde" style="margin-top:12px;">
+        💡 La reducción <strong>no disminuye el salario</strong>. El valor de la hora de trabajo sube proporcionalmente, lo que puede aumentar el valor de las horas extra.
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><div class="ibox">🌙</div>Recargos y horas extras (Art. 168 CST)</div>
+      <table class="tabla">
+        <thead><tr><th>Tipo</th><th>Recargo sobre hora ordinaria</th><th>Total a pagar</th></tr></thead>
+        <tbody>
+          <tr><td>Hora extra diurna (6am–9pm)</td><td>+25%</td><td>125% del valor hora</td></tr>
+          <tr><td>Hora extra nocturna (9pm–6am)</td><td>+75%</td><td>175% del valor hora</td></tr>
+          <tr><td>Recargo nocturno ordinario</td><td>+35%</td><td>135% del valor hora</td></tr>
+          <tr><td>Trabajo dominical / festivo diurno</td><td>+75%</td><td>175% del valor hora</td></tr>
+          <tr><td>Trabajo dominical / festivo nocturno</td><td>+110%</td><td>210% del valor hora</td></tr>
+          <tr><td>Extra dominical / festivo diurno</td><td>+100%</td><td>200% del valor hora</td></tr>
+          <tr><td>Extra dominical / festivo nocturno</td><td>+150%</td><td>250% del valor hora</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><div class="ibox">🎯</div>Otros derechos clave</div>
+      <ul>
+        <li><strong>Dotación:</strong> 3 pares de zapatos + 3 vestidos de trabajo al año. Para trabajadores que ganen hasta 2 SMMLV y lleven más de 3 meses en la empresa. (Art. 230 CST)</li>
+        <li><strong>Licencia de maternidad:</strong> 18 semanas remuneradas. El empleador la paga y la EPS la reembolsa.</li>
+        <li><strong>Licencia de paternidad:</strong> 2 semanas remuneradas.</li>
+        <li><strong>Licencia por luto:</strong> 5 días hábiles por fallecimiento de familiar cercano.</li>
+        <li><strong>Seguridad social:</strong> Salud (12.5% del salario: 8.5% empleador, 4% trabajador), pensión (16%: 12% empleador, 4% trabajador), ARL (varía según riesgo).</li>
+      </ul>
+    </div>
+
+  </div><!-- /jornada -->
+
+  <!-- ======= DESPIDO ======= -->
+  <div class="panel" id="panel-despido">
+
+    <div class="card">
+      <div class="card-title"><div class="ibox">🚪</div>Tipos de terminación del contrato</div>
+      <div class="prest-grid">
+        <div class="prest-card">
+          <div class="prest-tag">Art. 62 CST</div>
+          <div class="prest-title">✅ Despido con justa causa</div>
+          <div class="prest-desc">El empleador tiene razones legales válidas (falta grave, actos inmorales, violencia, etc.). El trabajador recibe prestaciones sociales completas pero <strong>NO hay indemnización</strong>.</div>
+        </div>
+        <div class="prest-card">
+          <div class="prest-tag">Art. 64 CST</div>
+          <div class="prest-title">❌ Despido sin justa causa</div>
+          <div class="prest-desc">Sin razón legal válida. El trabajador recibe prestaciones sociales completas <strong>MÁS indemnización</strong> por despido. La más común en la práctica.</div>
+        </div>
+        <div class="prest-card">
+          <div class="prest-tag">Voluntaria</div>
+          <div class="prest-title">🖊️ Renuncia voluntaria</div>
+          <div class="prest-desc">El trabajador decide retirarse. Recibe prestaciones sociales completas pero <strong>NO hay indemnización</strong>. Plazo de preaviso: 30 días (negociable).</div>
+        </div>
+        <div class="prest-card">
+          <div class="prest-tag">Art. 64 CST</div>
+          <div class="prest-title">⚠️ Despido indirecto</div>
+          <div class="prest-desc">El empleador crea condiciones que obligan al trabajador a renunciar. Si se prueba, se puede reclamar como despido sin justa causa con derecho a indemnización.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><div class="ibox">💵</div>Indemnización por despido sin justa causa (Art. 64 CST)</div>
+      <div class="hl hl-miel">
+        <strong>Para contratos a término indefinido:</strong><br>
+        • Primer año: <strong>30 días de salario</strong><br>
+        • Desde el segundo año: <strong>20 días adicionales por cada año</strong> (o fracción) de más
+      </div>
+      <div class="hl hl-azul">
+        <strong>Para contratos a término fijo:</strong><br>
+        El empleador debe pagar el equivalente a los salarios del <strong>tiempo que falta para terminar el contrato</strong>.
+      </div>
+      <div class="hl hl-rojo">
+        <strong>⏰ Plazo para pagar:</strong> La liquidación completa debe pagarse el mismo día que termina el contrato. Si hay demora, aplica la indemnización moratoria del Art. 65 CST (1 día de salario por día de retraso).
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><div class="ibox">📌</div>Pasos al recibir la liquidación</div>
+      <div class="paso"><div class="pnum">1</div><div class="pcont"><h3>Verifica todos los conceptos</h3><p>La liquidación debe incluir: salarios pendientes, cesantías, intereses de cesantías, prima proporcional, vacaciones pendientes y (si aplica) indemnización.</p></div></div>
+      <div class="paso"><div class="pnum">2</div><div class="pcont"><h3>No firmes sin revisar</h3><p>No estás obligado a firmar una liquidación que no cuadre. Pide tiempo para verificar los cálculos. Puedes usar la calculadora de esta app.</p></div></div>
+      <div class="paso"><div class="pnum">3</div><div class="pcont"><h3>Si hay diferencias, reclama</h3><p>Puedes interponer una queja ante el Ministerio del Trabajo, acudir a un inspector laboral o demandar ante un juez laboral. El plazo de prescripción para reclamar prestaciones laborales es de <strong>3 años</strong>.</p></div></div>
+      <div class="paso"><div class="pnum">4</div><div class="pcont"><h3>Conserva los documentos</h3><p>Guarda: colillas de pago, contrato de trabajo, comprobante de consignación de cesantías, comunicaciones con el empleador. Son prueba clave en una demanda.</p></div></div>
+    </div>
+
+  </div><!-- /despido -->
+
+  <!-- ======= FAQ ======= -->
+  <div class="panel" id="panel-faq">
+
+    <div class="card"><div class="card-title"><div class="ibox">❓</div>Preguntas frecuentes</div></div>
+
+    <div class="acc">
+      <button class="acc-head" onclick="toggleAcc(this)">¿Me pueden pagar todo en efectivo sin contrato? ¿Tengo derechos? <span class="arr">▼</span></button>
+      <div class="acc-body">
+        <p>Sí. Aunque no exista contrato escrito, si hay una relación laboral real (subordinación, prestación personal de servicios y remuneración), la ley presume que existe un contrato de trabajo y el trabajador tiene <strong>todos sus derechos</strong>: salario mínimo, prestaciones, seguridad social.</p>
+        <p>En caso de disputa, la carga de la prueba se invierte: el empleador debe demostrar que no hubo relación laboral.</p>
+      </div>
+    </div>
+
+    <div class="acc">
+      <button class="acc-head" onclick="toggleAcc(this)">¿Puedo retirar mis cesantías del fondo mientras trabajo? <span class="arr">▼</span></button>
+      <div class="acc-body">
+        <p>Sí, pero solo en causales específicas establecidas por ley:</p>
+        <ul>
+          <li><strong>Adquisición de vivienda</strong> (compra, construcción, mejora).</li>
+          <li><strong>Educación superior</strong> del trabajador o sus hijos.</li>
+          <li><strong>Terminación del contrato</strong> (el fondo las entrega al trabajador).</li>
+        </ul>
+        <p>El retiro parcial para otros fines (viajes, deudas, consumo) <strong>no está permitido</strong> por ley mientras haya vínculo laboral vigente.</p>
+      </div>
+    </div>
+
+    <div class="acc">
+      <button class="acc-head" onclick="toggleAcc(this)">¿Qué pasa si el empleador no consigna las cesantías al fondo? <span class="arr">▼</span></button>
+      <div class="acc-body">
+        <p>Es una infracción grave. El empleador debe pagar <strong>1 día de salario por cada día de mora</strong> (indemnización moratoria). Puedes quejarte ante el Ministerio del Trabajo, quien puede imponer multas al empleador.</p>
+        <p>Si al terminar el contrato el empleador no las consignó, las debe pagar directamente con los intereses moratorios correspondientes.</p>
+      </div>
+    </div>
+
+    <div class="acc">
+      <button class="acc-head" onclick="toggleAcc(this)">¿El salario integral incluye prestaciones? <span class="arr">▼</span></button>
+      <div class="acc-body">
+        <p>Sí. El salario integral (para trabajadores que ganen más de 10 SMMLV — $14.235.000 en 2025) ya incluye un <strong>factor prestacional del 30%</strong> del salario total, que reemplaza las prestaciones sociales. No se pagan cesantías ni prima por separado.</p>
+        <p>Sin embargo, las <strong>vacaciones sí se deben pagar</strong> aunque haya salario integral, ya que son un descanso, no una prestación social.</p>
+      </div>
+    </div>
+
+    <div class="acc">
+      <button class="acc-head" onclick="toggleAcc(this)">¿Cuánto tiempo tengo para demandar si no me pagaron bien? <span class="arr">▼</span></button>
+      <div class="acc-body">
+        <p>El plazo de <strong>prescripción laboral es de 3 años</strong> contados desde que la obligación se hizo exigible (generalmente desde la terminación del contrato). Después de ese plazo, pierdes el derecho a reclamar judicialmente.</p>
+        <p>Puedes presentar la demanda ante el Juez Laboral del circuito de tu ciudad o interponer primero una queja ante el Ministerio del Trabajo (gratuito).</p>
+      </div>
+    </div>
+
+    <div class="acc">
+      <button class="acc-head" onclick="toggleAcc(this)">¿Los empleados domésticos tienen los mismos derechos? <span class="arr">▼</span></button>
+      <div class="acc-body">
+        <p>Sí. Desde la Ley 1788 de 2016 y la jurisprudencia constitucional, los trabajadores domésticos tienen exactamente los mismos derechos que cualquier otro trabajador: salario mínimo, cesantías, prima, vacaciones, seguridad social y protección a la maternidad.</p>
+        <p>No existe diferencia legal entre un empleado doméstico y cualquier otro trabajador dependiente.</p>
+      </div>
+    </div>
+
+    <div class="disclaimer">
+      <strong>⚠️ Aviso legal:</strong> Esta app tiene propósito informativo basado en el CST y normas vigentes a 2025. No reemplaza asesoría jurídica. Para reclamaciones laborales, acude al Ministerio del Trabajo o a un abogado laboral.
+    </div>
+
+  </div><!-- /faq -->
+
+</main>
+
+<footer>
+  Desarrollada por <span>Vibras Positivas HM</span> — Derechos de Autor Reservados
+</footer>
+
+<script>
+// RELOJ COLOMBIA
+function updateClock() {
+  const col = new Date(new Date().toLocaleString('en-US', { timeZone: 'America/Bogota' }));
+  const dias  = ['Domingo','Lunes','Martes','Miércoles','Jueves','Viernes','Sábado'];
+  const meses = ['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic'];
+  document.getElementById('reloj-txt').textContent =
+    `🇨🇴 ${dias[col.getDay()]} ${col.getDate()} ${meses[col.getMonth()]} ${col.getFullYear()} — ` +
+    `${String(col.getHours()).padStart(2,'0')}:${String(col.getMinutes()).padStart(2,'0')}:${String(col.getSeconds()).padStart(2,'0')}`;
+}
+updateClock(); setInterval(updateClock, 1000);
+
+// TABS
+function showTab(id, btn) {
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('panel-' + id).classList.add('active');
+  btn.classList.add('active');
+}
+
+// ACCORDION
+function toggleAcc(btn) {
+  const body = btn.nextElementSibling;
+  const isOpen = btn.classList.contains('open');
+  document.querySelectorAll('.acc-head').forEach(b => {
+    b.classList.remove('open');
+    b.nextElementSibling.style.display = 'none';
+  });
+  if (!isOpen) { btn.classList.add('open'); body.style.display = 'block'; }
+}
+
+// CALCULADORA
+function fmt(n) { return '$' + Math.round(n).toLocaleString('es-CO'); }
+
+function calcularLiquidacion() {
+  const salario  = parseFloat(document.getElementById('salario').value);
+  const aux      = document.getElementById('auxTransporte').value === 'si' ? 200000 : 0;
+  const fi       = document.getElementById('fechaIngreso').value;
+  const fr       = document.getElementById('fechaRetiro').value;
+  const vacDis   = parseInt(document.getElementById('vacDisfrutadas').value) || 0;
+
+  if (!salario || salario <= 0) { alert('Por favor ingresa un salario válido.'); return; }
+  if (!fi || !fr) { alert('Por favor ingresa las fechas de ingreso y retiro.'); return; }
+
+  const dIngreso = new Date(fi + 'T00:00:00');
+  const dRetiro  = new Date(fr + 'T00:00:00');
+  if (dRetiro <= dIngreso) { alert('La fecha de retiro debe ser posterior al ingreso.'); return; }
+
+  // Días trabajados (año comercial)
+  const diffMs = dRetiro - dIngreso;
+  const diasTrabajados = Math.floor(diffMs / 86400000);
+  const diasComerciales = Math.min(diasTrabajados, diasTrabajados); // simplificado
+  const aniosTrabajados = diasTrabajados / 365;
+
+  const saBase = salario + aux; // base para cesantías y prima
+  const fmtF = d => d.toLocaleDateString('es-CO', { day:'2-digit', month:'long', year:'numeric', timeZone:'America/Bogota' });
+
+  // Cálculos
+  const cesantias     = (saBase * diasTrabajados) / 360;
+  const intCesantias  = cesantias * 0.12 * (diasTrabajados / 360);
+  // Prima: días del último semestre iniciado
+  const prima         = (saBase * diasTrabajados) / 360; // simplificado proporcional total
+  // Vacaciones: base salario ordinario (sin auxilio transporte)
+  const vacTotal      = (salario * diasTrabajados) / 720;
+  const vacPendientes = Math.max(0, vacTotal - (salario / 30 * vacDis));
+
+  const total = cesantias + intCesantias + prima + vacPendientes;
+
+  const body = document.getElementById('res-liq-body');
+  body.innerHTML = `
+    <div class="res-row"><span class="rl">📅 Período trabajado</span><span class="rv">${fmtF(dIngreso)} → ${fmtF(dRetiro)}</span></div>
+    <div class="res-row"><span class="rl">📆 Días trabajados (aprox.)</span><span class="rv">${diasTrabajados} días (${aniosTrabajados.toFixed(2)} años)</span></div>
+    <div class="res-row"><span class="rl">💼 Salario base</span><span class="rv">${fmt(salario)}</span></div>
+    <div class="res-row"><span class="rl">🚌 Auxilio transporte</span><span class="rv">${aux > 0 ? fmt(aux) : 'No aplica'}</span></div>
+    <div class="res-sep"></div>
+    <div class="res-row"><span class="rl">🏦 Cesantías</span><span class="rv">${fmt(cesantias)}</span></div>
+    <div class="res-row"><span class="rl">📈 Intereses s/ cesantías (12%)</span><span class="rv">${fmt(intCesantias)}</span></div>
+    <div class="res-row"><span class="rl">🎁 Prima de servicios</span><span class="rv">${fmt(prima)}</span></div>
+    <div class="res-row"><span class="rl">🏖️ Vacaciones pendientes</span><span class="rv">${fmt(vacPendientes)}</span></div>
+    <div class="res-sep"></div>
+    <div class="res-row" style="padding-top:12px;">
+      <span class="rl" style="font-size:15px;font-weight:700;color:var(--crema);">💰 TOTAL LIQUIDACIÓN ESTIMADA</span>
+      <span class="rv rv-total">${fmt(total)}</span>
+    </div>
+    <div class="hl hl-miel" style="margin-top:14px;font-size:12.5px;">
+      ⚠️ Este valor <strong>no incluye</strong> salarios pendientes, horas extras, ni indemnización por despido. Si hubo despido sin justa causa, suma 30 días de salario por el primer año + 20 días por cada año adicional.
+    </div>
+  `;
+
+  document.getElementById('res-liq').style.display = 'block';
+  document.getElementById('res-liq').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+
+// Poner fecha de hoy por defecto en retiro
+window.addEventListener('DOMContentLoaded', () => {
+  const hoy = new Date(new Date().toLocaleString('en-US', { timeZone: 'America/Bogota' }));
+  const yyyy = hoy.getFullYear();
+  const mm   = String(hoy.getMonth()+1).padStart(2,'0');
+  const dd   = String(hoy.getDate()).padStart(2,'0');
+  document.getElementById('fechaRetiro').value = `${yyyy}-${mm}-${dd}`;
+});
+</script>
+</body>
+</html>
